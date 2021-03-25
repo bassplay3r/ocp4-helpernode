@@ -137,8 +137,8 @@
       url: "{{ ocp_bios }}"
       dest: /var/www/html/install/bios.raw.gz
       mode: 0555
-    register: return
-    until: return.status_code == 200
+    register: response
+    until: response.status_code == 200
     retries: 3
     delay: 15
     when: ("metal" in ocp_bios) 
@@ -148,8 +148,8 @@
       url: "{{ ocp_bios }}"
       dest: /var/www/html/install/rootfs.img
       mode: 0555
-    register: return
-    until: return.status_code == 200
+    register: response
+    until: response.status_code == 200
     retries: 3
     delay: 15
     when: ("rootfs" in ocp_bios) 
@@ -232,8 +232,8 @@
       url: "{{ ocp_initramfs }}"
       dest: /var/lib/tftpboot/rhcos/initramfs.img
       mode: 0555
-    register: return
-    until: return.status_code == 200
+    register: response
+    until: response.status_code == 200
     retries: 3
     delay: 15
     when: not staticips
@@ -243,8 +243,8 @@
       url: "{{ ocp_install_kernel }}"
       dest: /var/lib/tftpboot/rhcos/kernel
       mode: 0555
-    register: return
-    until: return.status_code == 200
+    register: response
+    until: response.status_code == 200
     retries: 3
     delay: 15
     when: not staticips
@@ -523,8 +523,8 @@
     get_url:
       url: "{{ ocp_client }}"
       dest: /usr/local/src/openshift-client-linux.tar.gz
-    register: return
-    until: return.status_code == 200
+    register: response
+    until: response.status_code == 200
     retries: 3
     delay: 15
 
@@ -532,8 +532,8 @@
     get_url:
       url: "{{ ocp_installer }}"
       dest: /usr/local/src/openshift-install-linux.tar.gz
-    register: return
-    until: return.status_code == 200
+    register: response
+    until: response.status_code == 200
     retries: 3
     delay: 15
 
@@ -566,8 +566,8 @@
     get_url:
       url: "{{ helm_source }}"
       dest: /usr/local/src/helm/helm-client.tar.gz
-    register: return
-    until: return.status_code == 200
+    register: response
+    until: response.status_code == 200
     retries: 3
     delay: 15
 
